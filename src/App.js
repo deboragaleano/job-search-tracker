@@ -1,6 +1,8 @@
 import './App.css';
 import {makeStyles} from '@material-ui/styles';
 import Navbar from './components/Navbar'; 
+// import List from './components/List'; 
+// import AddItem from './components/AddItem';
 import { Container } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -17,6 +19,8 @@ function App() {
   return (
     <Container className={classes.root}>
         <Navbar /> 
+        {/* <List />  */}
+        {/* <AddItem />  */}
     </Container> 
   );
 }
