@@ -1,8 +1,9 @@
 import './App.css';
 import {makeStyles} from '@material-ui/styles';
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'; 
-// import List from './components/List'; 
-// import AddItem from './components/AddItem';
+import List from './components/List'; 
+import AddItem from './components/AddItem';
 import { Container } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -18,9 +19,16 @@ function App() {
 
   return (
     <Container className={classes.root}>
-        <Navbar /> 
-        {/* <List />  */}
-        {/* <AddItem />  */}
+        <BrowserRouter>
+          <Navbar /> 
+
+          <Switch>
+            <Route exact path='/' component={List}/>
+            <Route exact path='/add' component={AddItem}/>
+          </Switch>
+
+        </BrowserRouter>
+     
     </Container> 
   );
 }
