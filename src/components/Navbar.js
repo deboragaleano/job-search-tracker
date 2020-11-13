@@ -10,7 +10,7 @@ const NavButton = withStyles((theme) => ({
     fontSize: "15px",
     border: "1px solid #D2691E",
     letterSpacing: "1px",
-    transition: "all 0.5s ease",
+    transition:'all 0.5s ease',
     "&:hover": {
       color: "#D2691E",
     },
