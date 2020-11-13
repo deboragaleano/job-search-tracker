@@ -29,21 +29,21 @@ const StyledTableRow = withStyles((theme) => ({
 const data = [
     {
         company: 'Some Company',
-        title: 'FrontEnd', 
+        position: 'FrontEnd', 
         jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 7',
+        dateApplied: 'Nov 7'
     },
     {
         company: 'Yes Company',
-        title: 'Customer Support', 
+        position: 'Customer Support', 
         jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 7',
+        dateApplied: 'Nov 7'
     },
     {
         company: 'Company',
-        title: 'Backend', 
+        position: 'Backend', 
         jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 10',
+        dateApplied: 'Nov 10'
     },
 ]
 
@@ -67,7 +67,7 @@ export default function List() {
         <TableHead>
           <TableRow>
             <StyledTableCell>Company</StyledTableCell>
-            <StyledTableCell>Title</StyledTableCell>
+            <StyledTableCell>Position</StyledTableCell>
             <StyledTableCell>Job Posting</StyledTableCell>
             <StyledTableCell>Date Applied</StyledTableCell>
             <StyledTableCell>Actions</StyledTableCell>
@@ -79,7 +79,7 @@ export default function List() {
               <StyledTableCell component="th" scope="row">
                 {data.company}
               </StyledTableCell>
-              <StyledTableCell>{data.title}</StyledTableCell>
+              <StyledTableCell>{data.position}</StyledTableCell>
               <StyledTableCell>
                 <a href={data.jobLink}
                 target='_blank' rel="noopener noreferrer">
