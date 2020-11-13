@@ -26,27 +26,6 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const data = [
-    {
-        company: 'Some Company',
-        position: 'FrontEnd', 
-        jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 7'
-    },
-    {
-        company: 'Yes Company',
-        position: 'Customer Support', 
-        jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 7'
-    },
-    {
-        company: 'Company',
-        position: 'Backend', 
-        jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 10'
-    },
-]
-
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
@@ -58,7 +37,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function List() {
+export default function List({applications}) {
   const classes = useStyles();
 
   return (
@@ -74,18 +53,18 @@ export default function List() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((data) => (
-            <StyledTableRow key={data.company}>
+          {applications.map(app => (
+            <StyledTableRow key={app.company}>
               <StyledTableCell component="th" scope="row">
-                {data.company}
+                {app.company}
               </StyledTableCell>
-              <StyledTableCell>{data.position}</StyledTableCell>
+              <StyledTableCell>{app.position}</StyledTableCell>
               <StyledTableCell>
-                <a href={data.jobLink}
+                <a href={app.link}
                 target='_blank' rel="noopener noreferrer">
                 Link</a>
               </StyledTableCell>
-              <StyledTableCell>{data.dateApplied}</StyledTableCell>
+              <StyledTableCell>{app.date}</StyledTableCell>
               <StyledTableCell>
                 <button className={classes.btn}><i className="fas fa-trash-alt"></i> </button>
                 <button className={classes.btn}><i className="fas fa-edit"></i></button>

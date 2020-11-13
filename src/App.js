@@ -3,8 +3,29 @@ import {makeStyles} from '@material-ui/styles';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'; 
 import List from './components/List'; 
-import AddItem from './components/AddItem';
+// import AddItem from './components/AddItem';
 import { Container } from '@material-ui/core';
+
+const applications = [
+  {
+      company: 'Some Company',
+      position: 'FrontEnd', 
+      link: 'https://i.ibb.co/54CHvmW/workout-app.png',
+      date: 'Nov 7'
+  },
+  {
+      company: 'Yes Company',
+      position: 'Customer Support', 
+      link: 'https://i.ibb.co/54CHvmW/workout-app.png',
+      date: 'Nov 7'
+  },
+  {
+      company: 'Company',
+      position: 'Backend', 
+      link: 'https://i.ibb.co/54CHvmW/workout-app.png',
+      date: 'Nov 10'
+  },
+]
 
 const useStyles = makeStyles({
   root: {
@@ -19,16 +40,9 @@ function App() {
 
   return (
     <Container className={classes.root}>
-        <BrowserRouter>
-          <Navbar /> 
-
-          <Switch>
-            <Route exact path='/' component={List}/>
-            <Route exact path='/add' component={AddItem}/>
-          </Switch>
-
-        </BrowserRouter>
-     
+        <Navbar /> 
+        <List applications={applications}/> 
+        {/* <AddItem />  */}
     </Container> 
   );
 }

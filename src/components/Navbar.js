@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { Container, Button } from "@material-ui/core";
 
@@ -38,24 +37,8 @@ function Navbar() {
   return (
     <Container className={classes.root}>
       <h1>JOB SEARCH TRACKER</h1>
-      <NavButton
-        component={NavLink}
-        to="/"
-        exact
-        className={classes.margin}
-        activeClassName={classes.active}
-      >
-        LIST
-      </NavButton>
-      <NavButton
-        component={NavLink}
-        to="/add"
-        exact
-        className={classes.margin}
-        activeClassName={classes.active}
-      >
-        ADD NEW
-      </NavButton>
+      <NavButton className={classes.margin}>LIST</NavButton>
+      <NavButton className={classes.margin}>ADD NEW</NavButton>
     </Container>
   );
 }
