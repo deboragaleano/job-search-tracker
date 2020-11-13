@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "30px 0 50px 0",
   },
   margin: {
-    margin: theme.spacing(0.3),
+    margin: theme.spacing(1),
   },
   active: {
     fontWeight: "bolder",
