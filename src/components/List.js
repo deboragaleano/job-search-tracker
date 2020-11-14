@@ -54,7 +54,7 @@ export default function List({applications}) {
         </TableHead>
         <TableBody>
           {applications.map(app => (
-            <StyledTableRow key={app.company}>
+            <StyledTableRow key={app.id}>
               <StyledTableCell component="th" scope="row">
                 {app.company}
               </StyledTableCell>
