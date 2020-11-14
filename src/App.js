@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/styles';
 import axios from 'axios'; 
 import Navbar from './components/Navbar'; 
 import List from './components/List'; 
-// import AddItem from './components/AddItem';
+import AddItem from './components/AddItem';
 import { Container } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -22,15 +22,25 @@ function App() {
     axios
       .get('http://localhost:3001/applications')
       .then(resp => {
-        setApplications(resp.data)
+        const data = resp.data
+        setApplications(data)
       })
   }, [])
+
+ 
+  const addItem = (newItem) => {
+    axios
+      .post('http://localhost:3001/applications', newItem)
+      .then(resp => {
+        setApplications([...applications, resp.data]) 
+      })
+  }
 
   return (
     <Container className={classes.root}>
         <Navbar /> 
         <List applications={applications}/> 
-        {/* <AddItem />  */}
+        <AddItem addItem={addItem}/>  
     </Container> 
   );
 }
