@@ -1,12 +1,12 @@
-import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import React from "react";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -20,42 +20,45 @@ const StyledTableCell = withStyles((theme) => ({
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
   },
 }))(TableRow);
 
 const data = [
-    {
-        company: 'Some Company',
-        position: 'FrontEnd', 
-        jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 7'
-    },
-    {
-        company: 'Yes Company',
-        position: 'Customer Support', 
-        jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 7'
-    },
-    {
-        company: 'Company',
-        position: 'Backend', 
-        jobLink: 'https://i.ibb.co/54CHvmW/workout-app.png',
-        dateApplied: 'Nov 10'
-    },
-]
+  {
+    id: "1",
+    company: "Some Company",
+    position: "FrontEnd",
+    jobLink: "https://i.ibb.co/54CHvmW/workout-app.png",
+    dateApplied: "Nov 7",
+  },
+  {
+    id: "2",
+    company: "Yes Company",
+    position: "Customer Support",
+    jobLink: "https://i.ibb.co/54CHvmW/workout-app.png",
+    dateApplied: "Nov 7",
+  },
+  {
+    id: '3',
+    company: "Company",
+    position: "Backend",
+    jobLink: "https://i.ibb.co/54CHvmW/workout-app.png",
+    dateApplied: "Nov 10",
+  },
+];
 
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
   btn: {
-    border: 'none',
-    cursor: 'pointer',
-    backgroundColor: 'inherit'
-  }
+    border: "none",
+    cursor: "pointer",
+    backgroundColor: "inherit",
+  },
 });
 
 export default function List() {
@@ -75,20 +78,28 @@ export default function List() {
         </TableHead>
         <TableBody>
           {data.map((data) => (
-            <StyledTableRow key={data.company}>
+            <StyledTableRow key={data.id}>
               <StyledTableCell component="th" scope="row">
                 {data.company}
               </StyledTableCell>
               <StyledTableCell>{data.position}</StyledTableCell>
               <StyledTableCell>
-                <a href={data.jobLink}
-                target='_blank' rel="noopener noreferrer">
-                Link</a>
+                <a
+                  href={data.jobLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Link
+                </a>
               </StyledTableCell>
               <StyledTableCell>{data.dateApplied}</StyledTableCell>
               <StyledTableCell>
-                <button className={classes.btn}><i className="fas fa-trash-alt"></i> </button>
-                <button className={classes.btn}><i className="fas fa-edit"></i></button>
+                <button className={classes.btn}>
+                  <i className="fas fa-trash-alt"></i>{" "}
+                </button>
+                <button className={classes.btn}>
+                  <i className="fas fa-edit"></i>
+                </button>
               </StyledTableCell>
             </StyledTableRow>
           ))}
