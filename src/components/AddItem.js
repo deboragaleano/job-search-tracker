@@ -33,11 +33,15 @@ export default function AddItem({ addItem }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(newItem);
+    reset(); 
+  };
+
+  const reset = () => {
     setCompany('')
     setPosition('')
     setNewLink('')
     setNewDate('')
-  };
+  }
 
   return (
     <div>
@@ -45,19 +49,16 @@ export default function AddItem({ addItem }) {
         <h2>ADD NEW</h2>
         <form onSubmit={handleSubmit} className={classes.root}>
           <TextField
-            id="standard-basic"
             value={newCompany}
             onChange={(e) => setCompany(e.target.value)}
             label="Company"
           />
           <TextField
-            id="standard-basic"
             value={newPosition}
             onChange={(e) => setPosition(e.target.value)}
             label="Job Title"
           />
           <TextField
-            id="standard-basic"
             value={newLink}
             onChange={(e) => setNewLink(e.target.value)}
             label="Job Link"
