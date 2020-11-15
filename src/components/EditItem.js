@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddItem({ addItem }) {
+export default function EditItem({ update }) {
   const classes = useStyles();
   const [newCompany, setCompany] = useState("");
   const [newPosition, setPosition] = useState("");
@@ -32,7 +32,7 @@ export default function AddItem({ addItem }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addItem(newItem);
+    update(newItem);
     setCompany('')
     setPosition('')
     setNewLink('')
@@ -71,7 +71,7 @@ export default function AddItem({ addItem }) {
             onChange={(e) => setNewDate(e.target.value)}
           />
           <Button variant="outlined" color="secondary" type="submit">
-            Add
+            Update
           </Button>
         </form>
       </Container>

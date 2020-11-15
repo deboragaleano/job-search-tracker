@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+import EditItem from './EditItem'; 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -37,8 +38,18 @@ const useStyles = makeStyles({
   }
 });
 
-export default function List({applications, remove}) {
+export default function List({applications, remove, update}) {
   const classes = useStyles();
+
+  const newItem = {
+    company: 'updatedCompany'
+  }
+
+  const editItem = (id) => {
+    // <EditItem /> 
+    update(id, newItem)
+  }
+
 
   return (
     <TableContainer component={Paper}>
@@ -67,7 +78,7 @@ export default function List({applications, remove}) {
               <StyledTableCell>{app.date}</StyledTableCell>
               <StyledTableCell>
                 <button onClick={() => remove(app.id)} className={classes.btn}><i className="fas fa-trash-alt"></i> </button>
-                <button className={classes.btn}><i className="fas fa-edit"></i></button>
+                <button onClick={() => editItem(app.id)} className={classes.btn}><i className="fas fa-edit"></i></button>
               </StyledTableCell>
             </StyledTableRow>
           ))}

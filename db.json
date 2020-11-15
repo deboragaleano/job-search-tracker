@@ -1,11 +1,16 @@
 {
   "applications": [
     {
-      "company": "test",
-      "position": "sds",
-      "link": "sd",
-      "date": "",
+      "company": "updatedCompany",
       "id": 1
+    },
+    {
+      "company": "anothertry",
+      "id": 2
+    },
+    {
+      "company": "please work",
+      "id": 3
     }
   ]
 }

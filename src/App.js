@@ -47,11 +47,24 @@ function App() {
     }
   }
 
+  const updateItem = (id, updatedItem) => {
+    const isSame = applications.find(app => app.id === id)
+    if(isSame) {
+      axios 
+        .put(`http://localhost:3001/applications/${id}`, updatedItem)
+        .then(returnedItem => {
+          const updatedApps = applications.map(app => app.id === id ? returnedItem.data : app)
+          setApplications(updatedApps)
+        })
+    }
+  }
+
   return (
     <Container className={classes.root}>
-        <Navbar /> 
-        <List applications={applications} remove={removeItem}/> 
+        {/* <Navbar />  */}
+        <h1>JOB SEARCH TRACKER</h1>
         <AddItem addItem={addItem}/>  
+        <List applications={applications} remove={removeItem} update={updateItem}/> 
     </Container> 
   );
 }
