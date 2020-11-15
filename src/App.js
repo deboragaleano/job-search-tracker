@@ -1,8 +1,8 @@
 import './App.css';
 import {makeStyles} from '@material-ui/styles';
 import List from './components/List'; 
-// import AddItem from './components/AddItem';
-// import Search from './components/Search';
+import AddItem from './components/AddItem';
+import Search from './components/Search';
 import { Container } from '@material-ui/core';
 
 const applications = [
@@ -40,11 +40,18 @@ function App() {
   return (
     <Container className={classes.root}>
         <h1>JOB SEARCH TRACKER</h1>
-        {/* <Search />  */}
+        <Search /> 
         <List applications={applications}/> 
-        {/* <AddItem />  */}
+        <AddItem /> 
     </Container> 
   );
 }
 
 export default App;
+
+  /* TODO:
+  1) Fetch data
+  2) Add Item
+  3) Remove Item
+  4) Search Items (add state and pass props)
+  */
