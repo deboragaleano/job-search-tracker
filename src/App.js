@@ -27,7 +27,6 @@ function App() {
       })
   }, [])
 
- 
   const addItem = (newItem) => {
     axios
       .post('http://localhost:3001/applications', newItem)
@@ -36,10 +35,22 @@ function App() {
       })
   }
 
+  const removeItem = (id) => {
+    const toDelete = applications.find(app => app.id === id)
+    const isOk = window.confirm(`Delete ${toDelete.company}?`)
+    if(isOk) {
+      axios
+        .delete(`http://localhost:3001/applications/${id}`)
+        .then(resp => {
+          setApplications(applications.filter(app => app.id !== id))
+        })
+    }
+  }
+
   return (
     <Container className={classes.root}>
         <Navbar /> 
-        <List applications={applications}/> 
+        <List applications={applications} remove={removeItem}/> 
         <AddItem addItem={addItem}/>  
     </Container> 
   );

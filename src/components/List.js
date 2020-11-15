@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function List({applications}) {
+export default function List({applications, remove}) {
   const classes = useStyles();
 
   return (
@@ -66,7 +66,7 @@ export default function List({applications}) {
               </StyledTableCell>
               <StyledTableCell>{app.date}</StyledTableCell>
               <StyledTableCell>
-                <button className={classes.btn}><i className="fas fa-trash-alt"></i> </button>
+                <button onClick={() => remove(app.id)} className={classes.btn}><i className="fas fa-trash-alt"></i> </button>
                 <button className={classes.btn}><i className="fas fa-edit"></i></button>
               </StyledTableCell>
             </StyledTableRow>
