@@ -1,9 +1,8 @@
 import './App.css';
 import {makeStyles} from '@material-ui/styles';
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import Navbar from './components/Navbar'; 
 import List from './components/List'; 
 // import AddItem from './components/AddItem';
+// import Search from './components/Search';
 import { Container } from '@material-ui/core';
 
 const applications = [
@@ -40,7 +39,8 @@ function App() {
 
   return (
     <Container className={classes.root}>
-        <Navbar /> 
+        <h1>JOB SEARCH TRACKER</h1>
+        {/* <Search />  */}
         <List applications={applications}/> 
         {/* <AddItem />  */}
     </Container> 
