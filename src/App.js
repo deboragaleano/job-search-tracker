@@ -43,7 +43,7 @@ function App() {
     }
   };
 
-  const filtedItems =
+  const filteredItems =
     search.length === 0
       ? applications
       : applications.filter((app) =>
@@ -54,7 +54,7 @@ function App() {
     <Container className={classes.root}>
       <Navbar />
       <Search value={search} onChange={(e) => setSearch(e.target.value)} />
-      <List applications={filtedItems} remove={removeItem} />
+      <List applications={filteredItems} remove={removeItem} />
       <AddItem addItem={addItem} />
     </Container>
   );
