@@ -1,21 +1,10 @@
 import { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/styles";
 import axios from "axios";
-import Search from "./components/Search";
-import List from "./components/List";
-import AddItem from "./components/AddItem";
-import { Container } from "@material-ui/core";
+import Search from "./Search"; 
+import List from "./List";
+import AddItem from "./AddItem";
 
-const useStyles = makeStyles({
-  root: {
-    fontFamily: "Abel",
-    alignItems: "center",
-    textAlign: "center",
-  },
-});
-
-function App() {
-  const classes = useStyles();
+function Home() {
   const [applications, setApplications] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -50,13 +39,12 @@ function App() {
         );
 
   return (
-    <Container className={classes.root}>
-      <h1>JOB SEARCH TRACKER</h1>
+    <>
       <Search value={search} onChange={(e) => setSearch(e.target.value)} />
       <List applications={filteredItems} remove={removeItem} />
       <AddItem addItem={addItem} />
-    </Container>
+    </>
   );
 }
 
-export default App;
+export default Home;

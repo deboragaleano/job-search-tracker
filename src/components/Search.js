@@ -13,7 +13,7 @@ export default function Search({value, onChange}) {
 
   return (
     <div className={classes.root}>
-          <TextField value={value} onChange={onChange} label="Search"/>
+          <TextField value={value} onChange={onChange} label="Search Company"/>
     </div>
   );
 }

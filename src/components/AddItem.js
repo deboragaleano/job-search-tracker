@@ -68,7 +68,6 @@ export default function AddItem({ addItem }) {
             type="date"
             className={classes.date}
             value={newDate}
-            dafault="Date"
             onChange={(e) => setNewDate(e.target.value)}
           />
           <Button variant="outlined" color="secondary" type="submit">
