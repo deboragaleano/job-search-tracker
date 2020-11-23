@@ -1,13 +1,11 @@
 import "./App.css";
-import axios from "axios";
-// import appService from './services/applications';
+import appService from './services/applications';
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import List from "./components/List";
 import AddItem from "./components/AddItem";
 import Search from "./components/Search";
 import { Container } from "@material-ui/core";
-const URL = "http://localhost:3001/applications";
 
 const useStyles = makeStyles({
   root: {
@@ -23,25 +21,30 @@ function App() {
   const classes = useStyles();
 
   useEffect(() => {
-    axios.get(URL).then((resp) => {
-      setApplications(resp.data);
-      console.log('useeffect');
-    });
+    appService
+      .getItems() 
+      .then(resp => {
+        setApplications(resp)
+      })
   }, []); 
 
   const addItem = (newItem) => {
-    axios.post(URL, newItem).then((resp) => {
-      setApplications([...applications, resp.data]);
-    });
+    appService
+      .create(newItem)
+      .then(returnedItem => {
+        setApplications([...applications, returnedItem]);
+      })
   };
 
   const removeItem = (id) => {
     const toDelete = applications.find((app) => app.id === id);
     const isOk = window.confirm(`Delete ${toDelete.company}?`);
     if (isOk) {
-      axios.delete(`${URL}/${id}`).then((resp) => {
-        setApplications(applications.filter((app) => app.id !== id));
-      });
+      appService
+        .remove(id)
+        .then(resp => {
+          setApplications(applications.filter(app => app.id !== id));
+        })
     }
   };
 
@@ -64,9 +67,3 @@ function App() {
 
 export default App;
 
-/* TODO:
-  1) Fetch data
-  2) Add Item
-  3) Remove Item
-  4) Search Items (add state and pass props)
-  */

@@ -7,7 +7,7 @@ const getItems = () => {
     return request.then(resp => resp.data)
 }
 
-const add = (newItem) => {
+const create = (newItem) => {
     const request = axios.post(URL, newItem)
     return request.then(resp => resp.data)
 }
@@ -17,4 +17,4 @@ const remove = (id) => {
     return request.then(resp => resp.data)
 }
 
-export default {getItems, add, remove}
+export default {getItems, create, remove}
