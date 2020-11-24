@@ -1,11 +1,22 @@
 import "./App.css";
 import appService from "./services/applications";
 import { useEffect, useState } from "react";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Container } from "@material-ui/core";
 import List from "./components/List";
+import PageHeader from "./components/PageHeader";
 import AddItem from "./components/AddItem";
 import Search from "./components/Search";
-import { Container } from "@material-ui/core";
 import Navbar from "./components/Navbar";
+
+const theme = createMuiTheme({
+  palette: {
+    background: {
+      default: "#fdfdff"
+    },
+  }
+});
+
 
 function App() {
   const [applications, setApplications] = useState([]);
@@ -41,15 +52,15 @@ function App() {
         );
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Navbar />
-      <Container>
-        <h1>JOB SEARCH TRACKER</h1>
+      {/* <Container> */}
+        <PageHeader /> 
         <Search value={search} onChange={(e) => setSearch(e.target.value)} />
         <List applications={filteredItems} remove={removeItem} />
         <AddItem addItem={addItem} />
-      </Container>
-    </>
+      {/* </Container> */}
+    </ThemeProvider>
   );
 }
 

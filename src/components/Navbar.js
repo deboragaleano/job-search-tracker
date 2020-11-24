@@ -6,12 +6,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import HomeWorkOutlinedIcon from '@material-ui/icons/HomeWorkOutlined';
+import HomeIcon from '@material-ui/icons/Home';
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    transform: 'translateZ(0)'
   },
   icon: {
     marginLeft: theme.spacing(12),
@@ -31,7 +32,7 @@ export default function Navbar() {
           <Grid container>
             <Grid item className={classes.icon}>
               <IconButton>
-                <HomeWorkOutlinedIcon />
+                <HomeIcon />
               </IconButton>
             </Grid>
             <Grid item sm></Grid>
