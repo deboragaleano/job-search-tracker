@@ -13,31 +13,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddItem({ addItem }) {
-  const [newCompany, setCompany] = useState("");
-  const [newPosition, setPosition] = useState("");
-  const [newLink, setNewLink] = useState("");
-  const [newDate, setNewDate] = useState("");
+const initialValues = {
+  company: "",
+  position: "",
+  link: "",
+  date: "",
+  note: "",
+};
+
+export default function AppForm({ addItem }) {
+  const [values, setValues] = useState(initialValues);
   const classes = useStyles();
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
   const newItem = {
-    company: newCompany,
-    position: newPosition,
-    link: newLink,
-    date: newDate,
+    company: values.company,
+    position: values.position,
+    link: values.link,
+    date: values.date,
+    note: values.note,
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(newItem);
-    reset(); 
-  };
-
-  const reset = () => {
-    setCompany("");
-    setPosition("");
-    setNewLink("");
-    setNewDate("");
+    // setValues(initialValues);
   };
 
   return (
@@ -46,32 +53,38 @@ export default function AddItem({ addItem }) {
         <h2>ADD NEW</h2>
         <form onSubmit={handleSubmit} className={classes.root}>
           <TextField
-            value={newCompany}
-            onChange={(e) => setCompany(e.target.value)}
+            value={values.company}
+            name="company"
+            onChange={handleInputChange}
             label="Company"
           />
           <TextField
-            value={newPosition}
-            onChange={(e) => setPosition(e.target.value)}
+            value={values.position}
+            name="position"
+            onChange={handleInputChange}
             label="Job Title"
           />
           <TextField
-            value={newLink}
-            onChange={(e) => setNewLink(e.target.value)}
+            value={values.link}
+            name="link"
+            onChange={handleInputChange}
             label="Job Link"
           />
           <TextField
             id="date"
             type="date"
+            name="date"
             className={classes.date}
-            value={newDate}
+            value={values.date}
             dafault="Date"
-            onChange={(e) => setNewDate(e.target.value)}
+            onChange={handleInputChange}
           />
-          {/* <TextField label="Company" />
-          <TextField label="Job Title" />
-          <TextField label="Job Link" />
-          <TextField label="Date Applied" /> */}
+          <TextField
+            value={values.note}
+            name="note"
+            onChange={handleInputChange}
+            label="Note"
+          />
           <Button type="submit" variant="outlined" color="secondary">
             Add
           </Button>

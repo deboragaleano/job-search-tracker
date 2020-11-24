@@ -7,6 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import AppForm from './AppForm'; 
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -37,10 +38,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function List({ applications, remove }) {
+export default function List({ applications, remove, addItem }) {
   const classes = useStyles();
 
   return (
+    <>
+    <AppForm addItem={addItem} /> 
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
@@ -78,5 +81,6 @@ export default function List({ applications, remove }) {
         </TableBody>
       </Table>
     </TableContainer>
+    </>
   );
 }

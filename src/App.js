@@ -2,10 +2,8 @@ import "./App.css";
 import appService from "./services/applications";
 import { useEffect, useState } from "react";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Container } from "@material-ui/core";
 import List from "./components/List";
 import PageHeader from "./components/PageHeader";
-import AddItem from "./components/AddItem";
 import Search from "./components/Search";
 import Navbar from "./components/Navbar";
 
@@ -54,12 +52,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      {/* <Container> */}
         <PageHeader /> 
         <Search value={search} onChange={(e) => setSearch(e.target.value)} />
-        <List applications={filteredItems} remove={removeItem} />
-        <AddItem addItem={addItem} />
-      {/* </Container> */}
+        <List applications={filteredItems} remove={removeItem} addItem={addItem}/>
     </ThemeProvider>
   );
 }
