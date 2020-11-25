@@ -38,7 +38,11 @@ const useStyles = makeStyles({
   },
 });
 
+<<<<<<< HEAD
 export default function List({ applications, remove, addItem }) {
+=======
+export default function List({applications, remove}) {
+>>>>>>> main
   const classes = useStyles();
 
   return (
@@ -56,7 +60,11 @@ export default function List({ applications, remove, addItem }) {
           </TableRow>
         </TableHead>
         <TableBody>
+<<<<<<< HEAD
           {applications.map((app) => (
+=======
+          {applications.map(app => (
+>>>>>>> main
             <StyledTableRow key={app.id}>
               <StyledTableCell component="th" scope="row">
                 {app.company}
@@ -69,12 +77,17 @@ export default function List({ applications, remove, addItem }) {
               </StyledTableCell>
               <StyledTableCell>{app.date}</StyledTableCell>
               <StyledTableCell>
+<<<<<<< HEAD
                 <button className={classes.btn} onClick={() => remove(app.id)}>
                   <i className="fas fa-trash-alt"></i>
                 </button>
                 <button className={classes.btn}>
                   <i className="fas fa-edit"></i>
                 </button>
+=======
+                <button onClick={() => remove(app.id)} className={classes.btn}><i className="fas fa-trash-alt"></i> </button>
+                {/* <button className={classes.btn}><i className="fas fa-edit"></i></button> */}
+>>>>>>> main
               </StyledTableCell>
             </StyledTableRow>
           ))}

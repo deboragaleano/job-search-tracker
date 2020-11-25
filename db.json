@@ -1,6 +1,7 @@
 {
   "applications": [
     {
+<<<<<<< HEAD
       "id": "269202b6-b0e9-4e84-8f3f-3db952379feb",
       "company": "Wordify",
       "position": "Safety Technician",
@@ -32,6 +33,27 @@
       "date": "",
       "note": "",
       "id": "fDwaFeD"
+=======
+      "company": "another",
+      "position": "",
+      "link": "",
+      "date": "",
+      "id": 2
+    },
+    {
+      "company": "New Comany",
+      "position": "",
+      "link": "",
+      "date": "",
+      "id": 3
+    },
+    {
+      "company": "sdns",
+      "position": "sds",
+      "link": "",
+      "date": "",
+      "id": 4
+>>>>>>> main
     }
   ]
 }
