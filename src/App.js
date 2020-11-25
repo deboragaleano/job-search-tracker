@@ -1,34 +1,34 @@
+import "./App.css";
+import appService from "./services/applications";
 import { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/styles";
-import axios from "axios";
-import Search from "./components/Search";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import List from "./components/List";
-import AddItem from "./components/AddItem";
-import { Container } from "@material-ui/core";
+import PageHeader from "./components/PageHeader";
+import Search from "./components/Search";
+import Navbar from "./components/Navbar";
 
-const useStyles = makeStyles({
-  root: {
-    fontFamily: "Abel",
-    alignItems: "center",
-    textAlign: "center",
-  },
+const theme = createMuiTheme({
+  palette: {
+    background: {
+      default: "#fdfdff"
+    },
+  }
 });
 
+
 function App() {
-  const classes = useStyles();
   const [applications, setApplications] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/applications").then((resp) => {
-      const data = resp.data;
-      setApplications(data);
+    appService.getItems().then((resp) => {
+      setApplications(resp);
     });
   }, []);
 
   const addItem = (newItem) => {
-    axios.post("http://localhost:3001/applications", newItem).then((resp) => {
-      setApplications([...applications, resp.data]);
+    appService.create(newItem).then((returnedItem) => {
+      setApplications([...applications, returnedItem]);
     });
   };
 
@@ -36,7 +36,7 @@ function App() {
     const toDelete = applications.find((app) => app.id === id);
     const isOk = window.confirm(`Delete ${toDelete.company}?`);
     if (isOk) {
-      axios.delete(`http://localhost:3001/applications/${id}`).then((resp) => {
+      appService.remove(id).then((resp) => {
         setApplications(applications.filter((app) => app.id !== id));
       });
     }
@@ -46,16 +46,16 @@ function App() {
     search.length === 0
       ? applications
       : applications.filter((app) =>
-          app.company.toLowerCase().includes(search.toLocaleLowerCase())
+          app.company.toLowerCase().includes(search.toLowerCase())
         );
 
   return (
-    <Container className={classes.root}>
-      <h1>JOB SEARCH TRACKER</h1>
-      <Search value={search} onChange={(e) => setSearch(e.target.value)} />
-      <List applications={filteredItems} remove={removeItem} />
-      <AddItem addItem={addItem} />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Navbar />
+        <PageHeader /> 
+        <Search value={search} onChange={(e) => setSearch(e.target.value)} />
+        <List applications={filteredItems} remove={removeItem} addItem={addItem}/>
+    </ThemeProvider>
   );
 }
 
