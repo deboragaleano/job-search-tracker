@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="inherit">
         <Toolbar>
           <Grid container>
             <Grid item className={classes.icon}>

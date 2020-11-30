@@ -1,24 +1,33 @@
 import "./App.css";
 import appService from "./services/applications";
 import { useEffect, useState } from "react";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import List from "./components/List";
 import PageHeader from "./components/PageHeader";
-import Search from "./components/Search";
+// import Search from "./components/Search";
 import Navbar from "./components/Navbar";
 
 const theme = createMuiTheme({
   palette: {
-    background: {
-      default: "#fdfdff"
+    primary: {
+      main: "#d81b60", 
     },
-  }
+    secondary: {
+      main: '#607d8b', 
+    }
+  },
 });
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    background: 'red'
+  },
+}));
 
 function App() {
   const [applications, setApplications] = useState([]);
   const [search, setSearch] = useState("");
+  const classes = useStyles(); 
 
   useEffect(() => {
     appService.getItems().then((resp) => {
@@ -52,9 +61,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-        <PageHeader /> 
-        <Search value={search} onChange={(e) => setSearch(e.target.value)} />
-        <List applications={filteredItems} remove={removeItem} addItem={addItem}/>
+        <div className="App"> 
+          <PageHeader /> 
+          {/* <Search value={search} onChange={(e) => setSearch(e.target.value)} /> */}
+          <List applications={filteredItems} remove={removeItem} addItem={addItem}/>
+        </div>
     </ThemeProvider>
   );
 }

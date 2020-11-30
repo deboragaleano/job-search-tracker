@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > *": {
+    "& .MuiFormControl-root": {
+      display: "flex",
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "80%",
     },
+  },
+  btn: {
+    margin: theme.spacing(2),
   },
 }));
 
@@ -44,52 +48,69 @@ export default function AppForm({ addItem }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(newItem);
-    // setValues(initialValues);
+    setValues(initialValues);
   };
 
   return (
-    <div>
-      <Container maxWidth="sm">
-        <h2>ADD NEW</h2>
-        <form onSubmit={handleSubmit} className={classes.root}>
-          <TextField
-            value={values.company}
-            name="company"
-            onChange={handleInputChange}
-            label="Company"
-          />
-          <TextField
-            value={values.position}
-            name="position"
-            onChange={handleInputChange}
-            label="Job Title"
-          />
-          <TextField
-            value={values.link}
-            name="link"
-            onChange={handleInputChange}
-            label="Job Link"
-          />
-          <TextField
-            id="date"
-            type="date"
-            name="date"
-            className={classes.date}
-            value={values.date}
-            dafault="Date"
-            onChange={handleInputChange}
-          />
-          <TextField
-            value={values.note}
-            name="note"
-            onChange={handleInputChange}
-            label="Note"
-          />
-          <Button type="submit" variant="outlined" color="secondary">
-            Add
-          </Button>
-        </form>
-      </Container>
-    </div>
+    <>
+      <h2>Add a new application 🤞🏽</h2>
+      <form onSubmit={handleSubmit} className={classes.root}>
+        <Grid container>
+          <Grid item xs={6}>
+            <TextField
+              required
+              variant="outlined"
+              value={values.company}
+              name="company"
+              onChange={handleInputChange}
+              label="Company"
+            />
+            <TextField
+              required
+              variant="outlined"
+              value={values.position}
+              name="position"
+              onChange={handleInputChange}
+              label="Job Title"
+            />
+            <TextField
+              required
+              variant="outlined"
+              value={values.link}
+              name="link"
+              onChange={handleInputChange}
+              label="Job Link"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              variant="outlined"
+              id="date"
+              type="date"
+              name="date"
+              className={classes.date}
+              value={values.date}
+              dafault="Date"
+              onChange={handleInputChange}
+            />
+            <TextField
+              variant="outlined"
+              value={values.note}
+              name="note"
+              onChange={handleInputChange}
+              label="Note"
+            />
+            <Button
+              className={classes.btn}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Save
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+    </>
   );
 }
