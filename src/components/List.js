@@ -27,56 +27,48 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const useStyles = makeStyles((theme) => ({
-  pageContent: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+
+// }));
 
 export default function List({ applications, remove, addItem }) {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <>
-      <Paper className={classes.pageContent}>
-        {/* <AppForm addItem={addItem} />  */}
-        <TableContainer component={Paper}>
-          <Table aria-label="customized table">
-            <TableHead>
-              <StyledTableRow>
-                <StyledTableCell>Company</StyledTableCell>
-                <StyledTableCell>Position</StyledTableCell>
-                <StyledTableCell>Job Posting</StyledTableCell>
-                <StyledTableCell>Date Applied</StyledTableCell>
-                <StyledTableCell>Note</StyledTableCell>
-                {/* <StyledTableCell>Actions</StyledTableCell>  */}
+      {/* <AppForm addItem={addItem} /> */}
+      <TableContainer component={Paper}>
+        <Table aria-label="customized table">
+          <TableHead>
+            <StyledTableRow>
+              <StyledTableCell>Company</StyledTableCell>
+              <StyledTableCell>Position</StyledTableCell>
+              <StyledTableCell>Job Posting</StyledTableCell>
+              <StyledTableCell>Date Applied</StyledTableCell>
+              <StyledTableCell>Note</StyledTableCell>
+              <StyledTableCell>Actions</StyledTableCell>
+            </StyledTableRow>
+          </TableHead>
+          <TableBody>
+            {applications.map((app) => (
+              <StyledTableRow key={app.id}>
+                <StyledTableCell component="th" scope="row">
+                  {app.company}
+                </StyledTableCell>
+                <StyledTableCell>{app.position}</StyledTableCell>
+                <StyledTableCell>
+                  <a href={app.link} target="_blank" rel="noopener noreferrer">
+                    Link
+                  </a>
+                </StyledTableCell>
+                <StyledTableCell>{app.date}</StyledTableCell>
+                <StyledTableCell>{app.note}</StyledTableCell>
+                <StyledTableCell>Actions</StyledTableCell>
               </StyledTableRow>
-            </TableHead>
-            <TableBody>
-              {applications.map((app) => (
-                <StyledTableRow key={app.id}>
-                  <StyledTableCell component="th" scope="row">
-                    {app.company}
-                  </StyledTableCell>
-                  <StyledTableCell>{app.position}</StyledTableCell>
-                  <StyledTableCell>
-                    <a
-                      href={app.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Link
-                    </a>
-                  </StyledTableCell>
-                  <StyledTableCell>{app.date}</StyledTableCell>
-                  <StyledTableCell>{app.note}</StyledTableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

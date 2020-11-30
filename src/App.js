@@ -1,33 +1,42 @@
 import "./App.css";
 import appService from "./services/applications";
 import { useEffect, useState } from "react";
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
 import List from "./components/List";
 import PageHeader from "./components/PageHeader";
-// import Search from "./components/Search";
+import Search from "./components/Search";
 import Navbar from "./components/Navbar";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#d81b60", 
+      main: "#d81b60",
     },
     secondary: {
-      main: '#607d8b', 
-    }
+      main: "#607d8b",
+    },
   },
 });
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: 'red'
+    background: "red",
+  },
+  pageContent: {
+    margin: theme.spacing(5),
+    padding: theme.spacing(3),
   },
 }));
 
 function App() {
   const [applications, setApplications] = useState([]);
   const [search, setSearch] = useState("");
-  const classes = useStyles(); 
+  const classes = useStyles();
 
   useEffect(() => {
     appService.getItems().then((resp) => {
@@ -61,11 +70,17 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-        <div className="App"> 
-          <PageHeader /> 
-          {/* <Search value={search} onChange={(e) => setSearch(e.target.value)} /> */}
-          <List applications={filteredItems} remove={removeItem} addItem={addItem}/>
-        </div>
+      <div className="App">
+        <PageHeader />
+        <Paper className={classes.pageContent}>
+          <Search value={search} onChange={(e) => setSearch(e.target.value)} />
+          <List
+            applications={filteredItems}
+            remove={removeItem}
+            addItem={addItem}
+          />
+        </Paper>
+      </div>
     </ThemeProvider>
   );
 }

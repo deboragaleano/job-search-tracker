@@ -1,19 +1,42 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import SearchIcon from "@material-ui/icons/Search";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(4)
+    margin: theme.spacing(4),
+    width: "30%",
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10,
   },
 }));
 
-export default function Search({value, onChange}) {
+export default function Search({ value, onChange }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-          <TextField value={value} onChange={onChange} label="Search"/>
-    </div>
+    <Paper className={classes.root}>
+      <IconButton
+        type="submit"
+        className={classes.iconButton}
+        aria-label="search"
+      >
+        <SearchIcon />
+      </IconButton>
+      <InputBase
+        className={classes.input}
+        placeholder="Search"
+        value={value}
+        onChange={onChange}
+      />
+    </Paper>
   );
 }
