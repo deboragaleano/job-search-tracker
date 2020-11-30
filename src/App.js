@@ -8,9 +8,11 @@ import {
 } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import List from "./components/List";
+import Modal from "./components/Modal";
 import PageHeader from "./components/PageHeader";
 import Search from "./components/Search";
 import Navbar from "./components/Navbar";
+import { Button } from "@material-ui/core";
 
 const theme = createMuiTheme({
   palette: {
@@ -31,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(5),
     padding: theme.spacing(3),
   },
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  modal: {
+    margin: theme.spacing(3)
+  }
 }));
 
 function App() {
@@ -73,7 +82,13 @@ function App() {
       <div className="App">
         <PageHeader />
         <Paper className={classes.pageContent}>
-          <Search value={search} onChange={(e) => setSearch(e.target.value)} />
+          <div className={classes.toolbar}>
+            <Search
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <Modal className={classes.modal} addItem={addItem}/> 
+          </div>
           <List
             applications={filteredItems}
             remove={removeItem}
