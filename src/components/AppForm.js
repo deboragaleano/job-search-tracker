@@ -9,16 +9,15 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFormControl-root": {
       display: "flex",
       margin: theme.spacing(4.5),
-      // padding: theme.spacing(2),
       width: "80%",
     },
   },
   btn: {
     marginLeft: '35px',
   },
-  title: {
-    margin: theme.spacing(3.5),
-  }
+  // title: {
+  //   margin: theme.spacing(3.5),
+  // }
 }));
 
 const initialValues = {
@@ -57,7 +56,6 @@ export default function AppForm({ addItem }) {
 
   return (
     <>
-      <h2 className={classes.title}>Add a new application 🤞🏽</h2>
       <form onSubmit={handleSubmit} className={classes.root}>
         <Grid container>
           <Grid item xs={6}>

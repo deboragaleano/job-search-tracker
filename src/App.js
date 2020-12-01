@@ -3,16 +3,15 @@ import appService from "./services/applications";
 import { useEffect, useState } from "react";
 import {
   makeStyles,
-  createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
 import Paper from "@material-ui/core/Paper";
 import List from "./components/List";
 import Modal from "./components/Modal";
 import PageHeader from "./components/PageHeader";
 import Search from "./components/Search";
 import Navbar from "./components/Navbar";
-import { Button } from "@material-ui/core";
 
 const theme = createMuiTheme({
   palette: {
