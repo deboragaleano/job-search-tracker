@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,8 +7,12 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import AppForm from "./AppForm";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Modal from "./Modal";
+import Search from "./Search";
+// import AppForm from "./AppForm";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -28,16 +32,29 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-// const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  modal: {
+    margin: theme.spacing(3)
+  }
+}));
 
-// }));
+export default function List({ applications, remove, addOrEdit, handleSearch, search }) {
+  const classes = useStyles();
 
-export default function List({ applications, remove, addItem }) {
-  // const classes = useStyles();
+  const handleEditButton = (id) => {
+    addOrEdit(id);
+  };
 
   return (
     <>
-      {/* <AppForm addItem={addItem} /> */}
+      <div className={classes.toolbar}>
+        <Search search={search} handleSearch={handleSearch} />
+        <Modal className={classes.modal} addOrEdit={addOrEdit} />
+      </div>
       <TableContainer component={Paper}>
         <Table aria-label="customized table">
           <TableHead>
@@ -64,7 +81,15 @@ export default function List({ applications, remove, addItem }) {
                 </StyledTableCell>
                 <StyledTableCell>{app.date}</StyledTableCell>
                 <StyledTableCell>{app.note}</StyledTableCell>
-                <StyledTableCell>Actions</StyledTableCell>
+                <StyledTableCell>
+                  <IconButton onClick={() => handleEditButton(app.id)}>
+                    {/* {openModal ? <Modal /> : null} */}
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton onClick={() => remove(app.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

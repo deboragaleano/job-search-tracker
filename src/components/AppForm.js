@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btn: {
-    marginLeft: '35px',
+    marginLeft: "35px",
   },
   // title: {
   //   margin: theme.spacing(3.5),
@@ -28,7 +28,7 @@ const initialValues = {
   note: "",
 };
 
-export default function AppForm({ addItem }) {
+export default function AppForm({ addOrEdit, handleClose }) {
   const [values, setValues] = useState(initialValues);
   const classes = useStyles();
 
@@ -48,10 +48,11 @@ export default function AppForm({ addItem }) {
     note: values.note,
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, id) => {
     e.preventDefault();
-    addItem(newItem);
+    addOrEdit(id, newItem);
     setValues(initialValues);
+    handleClose();
   };
 
   return (

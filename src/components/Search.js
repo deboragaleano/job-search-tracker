@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Search({ value, onChange }) {
+export default function Search({ value, handleSearch }) {
   const classes = useStyles();
 
   return (
@@ -35,7 +35,7 @@ export default function Search({ value, onChange }) {
         className={classes.input}
         placeholder="Search"
         value={value}
-        onChange={onChange}
+        onChange={handleSearch}
       />
     </Paper>
   );

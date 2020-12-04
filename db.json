@@ -1,66 +1,23 @@
 {
   "applications": [
     {
-      "id": "269202b6-b0e9-4e84-8f3f-3db952379feb",
-      "company": "Wordify",
-      "position": "Safety Technician",
-      "link": "https://moonfruit.com/nisl/ut.jpg?in=curabitur&quis=at&justo=ipsum&maecenas=ac&rhoncus=tellus&aliquam=semper",
-      "date": "17-Oct-2020"
+      "id": "b9nsEz3"
     },
     {
-      "id": "6963336d-a6f8-4a8b-bf97-54d5a9e9a5c4",
-      "company": "Yakijo",
-      "position": "Account Executive",
-      "link": "https://macromedia.com/imperdiet.png?sed=facilisi&accumsan=cras&felis=non&ut=velit&at=nec&dolor=nisi&quis=vulputate&odio=nonummy&consequat=maecenas&varius=tincidunt&integer=lacus&ac=at&leo=velit&pellentesque=vivamus&ultrices=vel&mattis=nulla&odio=eget&donec=eros&vitae=elementum&nisi=pellentesque&nam=quisque&ultrices=porta&libero=volutpat&non=erat&mattis=quisque&pulvinar=erat&nulla=eros&pede=viverra&ullamcorper=eget&augue=congue&a=eget&suscipit=semper&nulla=rutrum&elit=nulla&ac=nunc&nulla=purus&sed=phasellus&vel=in&enim=felis&sit=donec&amet=semper&nunc=sapien&viverra=a&dapibus=libero&nulla=nam&suscipit=dui&ligula=proin&in=leo&lacus=odio&curabitur=porttitor&at=id&ipsum=consequat&ac=in&tellus=consequat&semper=ut&interdum=nulla&mauris=sed&ullamcorper=accumsan&purus=felis&sit=ut&amet=at&nulla=dolor&quisque=quis&arcu=odio&libero=consequat&rutrum=varius&ac=integer&lobortis=ac&vel=leo&dapibus=pellentesque&at=ultrices&diam=mattis",
-      "date": "13-Sep-2020"
-    },
-    {
-      "company": "YES",
-      "position": "",
-      "link": "",
-      "date": "",
-      "note": "",
-      "id": "YQ0XOtW"
-    },
-    {
-      "company": "YES",
-      "position": "",
-      "link": "",
-      "date": "2020-11-30",
-      "note": "",
-      "id": "EsB7dHw"
-    },
-    {
-      "company": "dwd",
+      "company": "sdsd",
       "position": "sdsd",
+      "link": "sdsd",
+      "date": "2020-11-30",
+      "note": "sdsd",
+      "id": "IpWmaKm"
+    },
+    {
+      "company": "sds",
+      "position": "dsd",
       "link": "sdsd",
       "date": "",
       "note": "",
-      "id": "Clq63U6"
-    },
-    {
-      "company": "Google",
-      "position": "Developer",
-      "link": "some link",
-      "date": "",
-      "note": "",
-      "id": "A-cMBgi"
-    },
-    {
-      "company": "this",
-      "position": "that",
-      "link": "yes",
-      "date": "",
-      "note": "",
-      "id": "vT46Qr9"
-    },
-    {
-      "company": "anothe",
-      "position": "anro",
-      "link": "skns",
-      "date": "",
-      "note": "",
-      "id": "X5hoG47"
+      "id": "8JbdTbB"
     }
   ]
 }

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
 import AppForm from "./AppForm";
 import Dialog from "@material-ui/core/Dialog";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/Add";
 import { Typography, DialogContent, DialogTitle } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Modal({ addItem }) {
+export default function Modal({ addOrEdit }) {
   const [open, setOpen] = useState(false);
   const classes = useStyles();
 
@@ -31,8 +31,8 @@ export default function Modal({ addItem }) {
 
   return (
     <div className={classes.root}>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        <AddIcon /> Add New
+      <Button disableRipple variant="outlined" color="primary" onClick={handleClickOpen}>
+      <AddIcon /> Add New
       </Button>
       <Dialog
         open={open}
@@ -51,7 +51,7 @@ export default function Modal({ addItem }) {
           </div>
         </DialogTitle>
         <DialogContent dividers>
-          <AppForm addItem={addItem} />
+          <AppForm addOrEdit={addOrEdit} handleClose={handleClose} />
         </DialogContent>
       </Dialog>
     </div>
