@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import AppForm from "./AppForm";
 import Dialog from "@material-ui/core/Dialog";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
-import AddIcon from "@material-ui/icons/Add";
+// import AddIcon from "@material-ui/icons/Add";
 import { Typography, DialogContent, DialogTitle } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,23 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Modal({ addOrEdit }) {
-  const [open, setOpen] = useState(false);
+export default function Modal({ addItem, open, handleClose }) {
   const classes = useStyles();
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <div className={classes.root}>
-      <Button disableRipple variant="outlined" color="primary" onClick={handleClickOpen}>
-      <AddIcon /> Add New
-      </Button>
+    // <div className={classes.root}>
+    //   <Button disableRipple variant="outlined" color="primary" onClick={handleClickOpen}>
+    //   <AddIcon /> Add New
+    //   </Button>
+    <>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -51,9 +43,9 @@ export default function Modal({ addOrEdit }) {
           </div>
         </DialogTitle>
         <DialogContent dividers>
-          <AppForm addOrEdit={addOrEdit} handleClose={handleClose} />
+          <AppForm addItem={addItem} handleClose={handleClose} />
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 }

@@ -28,7 +28,7 @@ const initialValues = {
   note: "",
 };
 
-export default function AppForm({ addOrEdit, handleClose }) {
+export default function AppForm({ addItem, handleClose }) {
   const [values, setValues] = useState(initialValues);
   const classes = useStyles();
 
@@ -48,9 +48,9 @@ export default function AppForm({ addOrEdit, handleClose }) {
     note: values.note,
   };
 
-  const handleSubmit = (e, id) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    addOrEdit(id, newItem);
+    addItem(newItem);
     setValues(initialValues);
     handleClose();
   };

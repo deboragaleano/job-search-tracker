@@ -8,6 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Modal from "./Modal";
@@ -38,23 +40,52 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   modal: {
-    margin: theme.spacing(3)
-  }
+    margin: theme.spacing(3),
+  },
 }));
 
-export default function List({ applications, remove, addOrEdit, handleSearch, search }) {
+export default function List({
+  applications,
+  remove,
+  addItem,
+  handleSearch,
+  search,
+}) {
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
 
-  const handleEditButton = (id) => {
-    addOrEdit(id);
+  const handleClickOpen = () => {
+    setOpen(true);
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  // const handleEditButton = (id, newItem) => {
+  //   addOrEdit(id, newItem)
+  //   setOpen(true);
+  // }
 
   return (
     <>
       <div className={classes.toolbar}>
         <Search search={search} handleSearch={handleSearch} />
-        <Modal className={classes.modal} addOrEdit={addOrEdit} />
+        <Button
+          disableRipple
+          variant="outlined"
+          color="primary"
+          onClick={handleClickOpen}
+        >
+          <AddIcon /> Add New
+        </Button>
       </div>
+      <Modal
+        className={classes.modal}
+        addItem={addItem}
+        handleClose={handleClose}
+        open={open}
+      />
       <TableContainer component={Paper}>
         <Table aria-label="customized table">
           <TableHead>
@@ -82,8 +113,7 @@ export default function List({ applications, remove, addOrEdit, handleSearch, se
                 <StyledTableCell>{app.date}</StyledTableCell>
                 <StyledTableCell>{app.note}</StyledTableCell>
                 <StyledTableCell>
-                  <IconButton onClick={() => handleEditButton(app.id)}>
-                    {/* {openModal ? <Modal /> : null} */}
+                  <IconButton>
                     <EditIcon />
                   </IconButton>
                   <IconButton onClick={() => remove(app.id)}>
@@ -98,3 +128,12 @@ export default function List({ applications, remove, addOrEdit, handleSearch, se
     </>
   );
 }
+
+/*
+
+- ADD THE CUSTOMIZED BUTTON THAT WILL OPEN 
+a MODAL and be responsible for ADD or EDIT (ON BOTH add and edit button icons) 
+- just extract the state and put it on this component, then just leave the dialog and form 
+- 
+
+*/
