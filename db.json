@@ -1,12 +1,28 @@
 {
   "applications": [
     {
-      "id": "Kz-nwe_",
-      "company": "see",
-      "position": "see",
-      "link": "see",
-      "date": "",
-      "note": ""
+      "id": 1,
+      "company": "New Company",
+      "position": "Frontend",
+      "link": "link",
+      "date": "2020-11-11",
+      "note": "Sent Application"
+    },
+    {
+      "id": 2,
+      "company": "Dream place",
+      "position": "Jr. Developer",
+      "link": "link",
+      "date": "2020-11-10",
+      "note": "Interview next week!"
+    },
+    {
+      "id": 3,
+      "company": "Like Google",
+      "position": "Developer",
+      "link": "link",
+      "date": "2020-12-02",
+      "note": "The waiting starts."
     }
   ]
 }

@@ -40,12 +40,6 @@ function App() {
     });
   }, []);
 
-  // const addItem = (newItem) => {
-  //   appService.create(newItem).then((returnedItem) => {
-  //     setApplications([...applications, returnedItem]);
-  //   });
-  // };
-
   const removeItem = (id) => {
     const toDelete = applications.find((app) => app.id === id);
     const isOk = window.confirm(`Delete ${toDelete.company}?`);

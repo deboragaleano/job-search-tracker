@@ -55,11 +55,11 @@ export default function List({
   search,
 }) {
   const [open, setOpen] = useState(false);
-  const [itemForEdit, setItemForEdit] = useState(null);
+  const [itemToUpdate, setItemToUpdate] = useState(null);
   const classes = useStyles();
 
   const handleClickOpen = () => {
-    setItemForEdit(null)
+    setItemToUpdate(null);
     setOpen(true);
   };
 
@@ -68,7 +68,7 @@ export default function List({
   };
 
   const handleEdit = (item) => {
-    setItemForEdit(item);
+    setItemToUpdate(item);
     setOpen(true);
   };
 
@@ -86,10 +86,15 @@ export default function List({
           <AddIcon /> Add New
         </Button>
       </div>
-      <Modal className={classes.modal} handleClose={handleClose} open={open} itemForEdit={itemForEdit}>
+      <Modal
+        className={classes.modal}
+        handleClose={handleClose}
+        open={open}
+        itemToUpdate={itemToUpdate}
+      >
         <AppForm
           addOrEdit={addOrEdit}
-          itemForEdit={itemForEdit}
+          itemToUpdate={itemToUpdate}
           handleClose={handleClose}
         />
       </Modal>
@@ -135,12 +140,3 @@ export default function List({
     </>
   );
 }
-
-/*
-
-- ADD THE CUSTOMIZED BUTTON THAT WILL OPEN 
-a MODAL and be responsible for ADD or EDIT (ON BOTH add and edit button icons) 
-- just extract the state and put it on this component, then just leave the dialog and form 
-- 
-
-*/

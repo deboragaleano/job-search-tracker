@@ -26,7 +26,7 @@ const initialValues = {
   note: "",
 };
 
-export default function AppForm({ addOrEdit, itemForEdit, handleClose }) {
+export default function AppForm({ addOrEdit, itemToUpdate, handleClose }) {
   const [values, setValues] = useState(initialValues);
   const classes = useStyles();
 
@@ -45,13 +45,14 @@ export default function AppForm({ addOrEdit, itemForEdit, handleClose }) {
     handleClose();
   };
 
+  // Updates and watches for itemToUpdate prop every time it changes 
   useEffect(() => {
-    if (itemForEdit !== null) {
+    if (itemToUpdate !== null) {
       setValues({
-        ...itemForEdit,
+        ...itemToUpdate,
       });
     } 
-  }, [itemForEdit]);
+  }, [itemToUpdate]);
 
   return (
     <>
