@@ -86,7 +86,7 @@ export default function List({
           <AddIcon /> Add New
         </Button>
       </div>
-      <Modal className={classes.modal} handleClose={handleClose} open={open}>
+      <Modal className={classes.modal} handleClose={handleClose} open={open} itemForEdit={itemForEdit}>
         <AppForm
           addOrEdit={addOrEdit}
           itemForEdit={itemForEdit}

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Modal(props) {
-  const {open, handleClose } = props; 
+  const {open, handleClose, itemForEdit } = props; 
   const classes = useStyles();
 
   return (
@@ -29,7 +29,7 @@ export default function Modal(props) {
         <DialogTitle>
           <div style={{ display: "flex" }}>
             <Typography variant="h6" component="div" style={{ flexGrow: "1" }}>
-              Add a new application 🤞🏽
+              {itemForEdit ? 'Update application' : 'Add a new application 🤞🏽'}
             </Typography>
             <IconButton color="secondary" onClick={handleClose}>
               <CloseIcon>Close</CloseIcon>
