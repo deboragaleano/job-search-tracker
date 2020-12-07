@@ -1,11 +1,8 @@
 import "./App.css";
 import appService from "./services/applications";
 import { useEffect, useState } from "react";
-import {
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles";
-import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import List from "./components/List";
 import PageHeader from "./components/PageHeader";
@@ -43,11 +40,11 @@ function App() {
     });
   }, []);
 
-  const addItem = (newItem) => {
-    appService.create(newItem).then((returnedItem) => {
-      setApplications([...applications, returnedItem]);
-    });
-  };
+  // const addItem = (newItem) => {
+  //   appService.create(newItem).then((returnedItem) => {
+  //     setApplications([...applications, returnedItem]);
+  //   });
+  // };
 
   const removeItem = (id) => {
     const toDelete = applications.find((app) => app.id === id);
@@ -59,26 +56,25 @@ function App() {
     }
   };
 
-  // const addOrEdit = (id, newItem) => {
-  //   const itemToUpdate = applications.find(app => app.id === id)
+  const addOrEdit = (id, newItem) => {
+    const itemToUpdate = applications.find(app => app.id === id)
 
-  //   if(!itemToUpdate) {
-  //     appService.create(newItem).then((createdItem) => {
-  //       setApplications([...applications, createdItem]);
-  //     });
-  //   } else {
-  //     appService.update(itemToUpdate.id, newItem).then(updatedItem => {
-  //       console.log(updatedItem);
-  //       // const updatedApps = applications.filter(app => 
-  //       //   app.id === itemToUpdate.id ? updatedItem : app)
-  //       // setApplications(updatedApps)
-  //     })
-  //   }
-  // }
+    if(!itemToUpdate) {
+      appService.create(newItem).then((createdItem) => {
+        setApplications([...applications, createdItem]);
+      });
+    } else {
+      appService.update(itemToUpdate.id, newItem).then(updatedItem => {
+        const updatedApps = applications.map(app => 
+          app.id === itemToUpdate.id ? updatedItem : app)
+        setApplications(updatedApps)
+      })
+    }
+  }
 
   const handleSearch = (e) => {
-    setSearch(e.target.value)
-  }
+    setSearch(e.target.value);
+  };
 
   const filteredItems =
     search.length === 0
@@ -98,7 +94,7 @@ function App() {
             handleSearch={handleSearch}
             applications={filteredItems}
             remove={removeItem}
-            addItem={addItem}
+            addOrEdit={addOrEdit}
           />
         </Paper>
       </div>

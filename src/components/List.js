@@ -14,7 +14,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Modal from "./Modal";
 import Search from "./Search";
-// import AppForm from "./AppForm";
+import AppForm from "./AppForm";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -42,19 +42,24 @@ const useStyles = makeStyles((theme) => ({
   modal: {
     margin: theme.spacing(3),
   },
+  btn: {
+    margin: theme.spacing(4),
+  },
 }));
 
 export default function List({
   applications,
   remove,
-  addItem,
+  addOrEdit,
   handleSearch,
   search,
 }) {
   const [open, setOpen] = useState(false);
+  const [itemForEdit, setItemForEdit] = useState(null);
   const classes = useStyles();
 
   const handleClickOpen = () => {
+    setItemForEdit(null)
     setOpen(true);
   };
 
@@ -62,16 +67,17 @@ export default function List({
     setOpen(false);
   };
 
-  // const handleEditButton = (id, newItem) => {
-  //   addOrEdit(id, newItem)
-  //   setOpen(true);
-  // }
+  const handleEdit = (item) => {
+    setItemForEdit(item);
+    setOpen(true);
+  };
 
   return (
     <>
       <div className={classes.toolbar}>
         <Search search={search} handleSearch={handleSearch} />
         <Button
+          className={classes.btn}
           disableRipple
           variant="outlined"
           color="primary"
@@ -80,12 +86,13 @@ export default function List({
           <AddIcon /> Add New
         </Button>
       </div>
-      <Modal
-        className={classes.modal}
-        addItem={addItem}
-        handleClose={handleClose}
-        open={open}
-      />
+      <Modal className={classes.modal} handleClose={handleClose} open={open}>
+        <AppForm
+          addOrEdit={addOrEdit}
+          itemForEdit={itemForEdit}
+          handleClose={handleClose}
+        />
+      </Modal>
       <TableContainer component={Paper}>
         <Table aria-label="customized table">
           <TableHead>
@@ -113,7 +120,7 @@ export default function List({
                 <StyledTableCell>{app.date}</StyledTableCell>
                 <StyledTableCell>{app.note}</StyledTableCell>
                 <StyledTableCell>
-                  <IconButton>
+                  <IconButton disableRipple onClick={() => handleEdit(app)}>
                     <EditIcon />
                   </IconButton>
                   <IconButton onClick={() => remove(app.id)}>

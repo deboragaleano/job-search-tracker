@@ -14,11 +14,10 @@ const useStyles = makeStyles((theme) => ({
   },
   btn: {
     marginLeft: "35px",
-  }
+  },
 }));
 
 const initialValues = {
-  id: null, 
   company: "",
   position: "",
   link: "",
@@ -26,7 +25,7 @@ const initialValues = {
   note: "",
 };
 
-export default function AppForm({ addOrEdit, itemForEdit, handleClose }) {
+export default function EditForm({ editItem, itemForEdit, handleClose }) {
   const [values, setValues] = useState(initialValues);
   const classes = useStyles();
 
@@ -38,10 +37,17 @@ export default function AppForm({ addOrEdit, itemForEdit, handleClose }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const newItem = {
+    company: values.company,
+    position: values.position,
+    link: values.link,
+    date: values.date,
+    note: values.note,
+  };
+
+  const handleSubmit = (e, id) => {
     e.preventDefault();
-    addOrEdit(values.id, values);
-    setValues(initialValues)
+    editItem(id, newItem);
     handleClose();
   };
 
@@ -50,7 +56,7 @@ export default function AppForm({ addOrEdit, itemForEdit, handleClose }) {
       setValues({
         ...itemForEdit,
       });
-    } 
+    }
   }, [itemForEdit]);
 
   return (
@@ -107,7 +113,7 @@ export default function AppForm({ addOrEdit, itemForEdit, handleClose }) {
               variant="contained"
               color="primary"
             >
-              Save
+              Update
             </Button>
           </Grid>
         </Grid>
