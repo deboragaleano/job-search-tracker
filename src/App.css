@@ -1,5 +1,5 @@
 html {
-  background-color: #f6f4fa;
+  background-color: 
   
 }
 /* .App-header {
@@ -13,11 +13,9 @@ html {
 } */
 
 .navbar {
-  display: flex;
-  padding: 15px;
-  width: 100%;
-  justify-content: center;
+
 }
+
 .not-selected {
   padding: 10px;
   color: #2b733b;
