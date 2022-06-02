@@ -4,7 +4,7 @@ const URL = 'http://localhost:3001/applications'
 
 const getItems = () => {
     const request = axios.get(URL)
-    return request.then(resp => resp.data)
+    return request.then(resp => )
 }
 
 const create = (newItem) => {
