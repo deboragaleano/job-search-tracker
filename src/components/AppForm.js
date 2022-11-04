@@ -37,12 +37,23 @@ export default function AppForm({ addOrEdit, itemToUpdate, handleClose }) {
       [name]: value,
     });
   };
+  
+  export default function AppForm({ addOrEdit, itemToUpdate, handleClose }) {
+  const [values, setValues] = useState(initialValues);
+  const classes = useStyles();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addOrEdit(values.id, values);
-    setValues(initialValues)
-    handleClose();
+
   };
 
   // Updates and watches for itemToUpdate prop every time it changes 
